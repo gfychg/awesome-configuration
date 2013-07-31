@@ -1,3 +1,4 @@
+-- default is located in /etc/xdg/awesome
 -- Setup display
 local xrandr = {
    naruto = "--output VGA1 --auto --output DVI1 --auto --left-of VGA1",
@@ -46,6 +47,14 @@ elseif config.hostname == "neo" then
 	 "setxkbmap us,fr '' compose:rwin ctrl:nocaps grp:rctrl_rshift_toggle",
 	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
 	       })
+elseif config.hostname == "Everest" then
+   execute = awful.util.table.join(
+      execute, {
+	 -- Keyboard and mouse
+	 -- "xset m 3 3",	-- Mouse acceleration
+	 "setxkbmap us,fr '' ctrl:nocaps grp:rctrl_rshift_toggle",
+	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
+	       })
 elseif config.hostname == "guybrush" then
    execute = awful.util.table.join(
       execute, {
@@ -74,3 +83,29 @@ elseif config.hostname == "guybrush" then
    xrun("keepassx", "keepassx -min -lock")
    xrun("NetworkManager Applet", "nm-applet")
 end
+
+-- Load Debian menu entries
+require("debian.menu")
+
+terminal = "x-terminal-emulator"
+editor = os.getenv("EDITOR") or "editor"
+editor_cmd = terminal .. " -e " .. editor
+
+-- {{{ Menu
+-- Create a laucher widget and a main menu
+myawesomemenu = {
+   { "manual", terminal .. " -e man awesome" },
+   { "edit config", editor_cmd .. " " .. awesome.conffile },
+   { "restart", awesome.restart },
+   { "quit", awesome.quit }
+}
+
+mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+                                    { "Debian", debian.menu.Debian_menu.Debian },
+                                    { "open terminal", terminal }
+                                  }
+                        })
+
+mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
+                                     menu = mymainmenu })
+-- }}}

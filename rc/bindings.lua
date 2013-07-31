@@ -198,7 +198,7 @@ config.keys.global = awful.util.table.join(
 	     "Swap with next window"),
    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
 	     "Swap with previous window"),
-
+   awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
    keydoc.group("Misc"),
 
    -- Spawn a terminal
