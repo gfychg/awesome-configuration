@@ -4,7 +4,7 @@ local shifty = loadrc("shifty", "vbe/shifty")
 local keydoc = loadrc("keydoc", "vbe/keydoc")
 
 local tagicon = function(icon)
-   if screen.count() > 1 then
+   if screen.count() > 0 then
       return beautiful.icons .. "/taglist/" .. icon .. ".png"
    end
    return nil
@@ -31,7 +31,7 @@ shifty.config.tags = {
    xterm = {
       position = 1,
       layout = awful.layout.suit.fair,
-      exclusive = true,
+      exclusive = false,
       slave = true,
       spawn = config.terminal,
       icon = tagicon("main"),

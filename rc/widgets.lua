@@ -287,10 +287,10 @@ for s = 1, screen.count() do
 	on(2, batwidget.widget ~= "" and baticon or ""),
 	on(2, batwidget.widget ~= "" and spacer or ""),
 
-	on(2, fswidget), screen.count() > 1 and on(2, fsicon) or "",
-	screen.count() > 1 and on(2, sepopen) or on(2, spacer),
+	on(1, fswidget), screen.count() > 0 and on(1, fsicon) or "",
+	screen.count() > 0 and on(1, sepopen) or on(1, spacer),
 
-	screen.count() > 1 and on(1, netgraph.widget) or "",
+	screen.count() > 0 and on(1, netgraph.widget) or "",
 	on(1, netdownicon), on(1, netdown),
 	on(1, netupicon), on(1, netup), on(1, spacer),
 
