@@ -55,6 +55,14 @@ elseif config.hostname == "Everest" then
 	 "setxkbmap us,fr '' ctrl:nocaps grp:rctrl_rshift_toggle",
 	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
 	       })
+elseif config.hostname == "Fuji-Yama" then
+   execute = awful.util.table.join(
+      execute, {
+	 -- Keyboard and mouse
+	 -- "xset m 3 3",	-- Mouse acceleration
+	 "setxkbmap us,fr '' ctrl:nocaps grp:rctrl_rshift_toggle",
+	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
+	       })
 elseif config.hostname == "guybrush" then
    execute = awful.util.table.join(
       execute, {
@@ -82,6 +90,10 @@ if config.hostname == "neo" then
 elseif config.hostname == "guybrush" then
    xrun("keepassx", "keepassx -min -lock")
    xrun("NetworkManager Applet", "nm-applet")
+elseif config.hostname == "Fuji-Yama" then
+   xrun("u1sdtool", "u1sdtool --start")
+elseif config.hostname == "Everest" then
+   xrun("u1sdtool", "u1sdtool --start")
 end
 
 -- Load Debian menu entries
