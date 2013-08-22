@@ -43,6 +43,14 @@ shifty.config.tags = {
       screen = math.max(screen.count(), 2),
       icon = tagicon("im"),
       nopopup = true,           -- don't give focus on creation
+   },
+   thunderbird = {
+      position = 5,
+      mwfact = 0.2,
+      exclusive = true,
+      screen = math.max(screen.count(), 2),
+      spawn = "thunderbird",
+      nopopup = true,           -- don't give focus on creation
    }
 }
 
@@ -66,6 +74,10 @@ shifty.config.apps = {
          tag = "xterm"
       },
       intrusive = true,         -- Display even on exclusive tags
+   },
+   {
+      match = { "thunderbird" },
+      tag = "thunderbird",
    },
    {
       match = { class = { "Keepassx", "Key[-]mon" },
