@@ -15,7 +15,7 @@ shifty.config.tags = {
       position = 3,
       mwfact = 0.7,
       exclusive = true,
-      max_clients = 1,
+      max_clients = 2,
       screen = math.max(screen.count(), 2),
       spawn = config.browser,
       icon = tagicon("web")
@@ -23,7 +23,7 @@ shifty.config.tags = {
    emacs = {
       position = 2,
       mwfact = 0.6,
-      exclusive = true,
+      exclusive = false,
       screen = 1,
       spawn = "emacs",
       icon = tagicon("dev"),
@@ -50,7 +50,20 @@ shifty.config.tags = {
       exclusive = true,
       screen = math.max(screen.count(), 2),
       spawn = "thunderbird",
-      nopopup = true,           -- don't give focus on creation
+   },
+   commander = {
+      position = 7,
+      mwfact = 0.6,
+      exclusive = false,
+      screen = math.max(screen.count(), 2),
+      spawn = "gnome-commander",
+   },
+   audacious = {
+      position = 9,
+      mwfact = 1.0,
+      exclusive = false,
+      screen = math.max(screen.count(), 2),
+      spawn = "audacious",
    }
 }
 
