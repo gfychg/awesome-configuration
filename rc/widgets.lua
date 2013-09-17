@@ -187,6 +187,34 @@ volwidget:buttons(awful.util.table.join(
 		     awful.button({ }, 4, volume.increase),
 		     awful.button({ }, 5, volume.decrease)))
 
+-- Keyboard map indicator and changer
+kbdcfg = {}
+kbdcfg.cmd = "setxkbmap"
+kbdcfg.layout = { "us", "fr", "cz" }
+kbdcfg.current = 1  -- us is our default layout
+kbdcfg.widget = widget({ type = "textbox", align = "right" })
+kbdcfg.widget.text = " " .. kbdcfg.layout[kbdcfg.current] .. " "
+kbdcfg.switch = function ()
+   kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
+   local t = " " .. kbdcfg.layout[kbdcfg.current] .. " "
+   kbdcfg.widget.text = t
+   os.execute( kbdcfg.cmd .. t )
+end
+
+-- Mouse bindings
+kbdcfg.widget:buttons(awful.util.table.join(
+    awful.button({ }, 1, function () kbdcfg.switch() end)
+))
+
+
+ -- Mouse bindings
+kbdcfg.widget:buttons(
+ awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch() end))
+)
+-- Add widget to your layout
+-- right_layout:add(kbdcfg.widget)
+
+
 -- File systems
 local fs = { "/",
 	     "/home",
@@ -281,12 +309,12 @@ for s = 1, screen.count() do
 	},
 	on(1, systray),
 	sepclose, datewidget, screen.count() > 1 and dateicon or "", spacer,
+	kbdcfg.widget, on(1, sepopen), spacer,
 	on(2, volwidget), screen.count() > 1 and on(2, volicon) or "", on(2, spacer),
 
 	on(2, batwidget.widget),
 	on(2, batwidget.widget ~= "" and baticon or ""),
 	on(2, batwidget.widget ~= "" and spacer or ""),
-
 	on(1, fswidget), screen.count() > 0 and on(1, fsicon) or "",
 	screen.count() > 0 and on(1, sepopen) or on(1, spacer),
 
