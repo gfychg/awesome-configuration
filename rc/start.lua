@@ -63,12 +63,12 @@ elseif config.hostname == "puydedome" then
 	 "setxkbmap us,fr '' ctrl:nocaps grp:rctrl_rshift_toggle",
 	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
 	       })
-elseif config.hostname == "Fuji-Yama" then
+elseif config.hostname == "fermi" then
    execute = awful.util.table.join(
       execute, {
 	 -- Keyboard and mouse
 	 -- "xset m 3 3",	-- Mouse acceleration
-	 "setxkbmap us,fr '' ctrl:nocaps grp:rctrl_rshift_toggle",
+	 "setxkbmap us,fr,cz '' ctrl:nocaps grp:rctrl_rshift_toggle",
 	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
 	       })
 elseif config.hostname == "guybrush" then
@@ -98,7 +98,7 @@ if config.hostname == "neo" then
 elseif config.hostname == "guybrush" then
    xrun("keepassx", "keepassx -min -lock")
    xrun("NetworkManager Applet", "nm-applet")
-elseif config.hostname == "Fuji-Yama" then
+elseif config.hostname == "fermi" then
    xrun("u1sdtool", "u1sdtool --start")
 elseif config.hostname == "Everest" then
    xrun("u1sdtool", "u1sdtool --start")
