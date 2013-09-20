@@ -31,31 +31,7 @@ local execute = {
 }
 
 -- Keyboard/Mouse configuration
-if config.hostname == "alucard" then
-   execute = awful.util.table.join(
-      execute, {
-	 -- Keyboard and mouse
-	 "xset m 4 3",	-- Mouse acceleration
-	 "setxkbmap us,fr '' compose:rwin ctrl:nocaps grp:rctrl_rshift_toggle",
-	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
-	       })
-elseif config.hostname == "neo" then
-   execute = awful.util.table.join(
-      execute, {
-	 -- Keyboard and mouse
-	 "xset m 3 3",	-- Mouse acceleration
-	 "setxkbmap us,fr '' compose:rwin ctrl:nocaps grp:rctrl_rshift_toggle",
-	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
-	       })
-elseif config.hostname == "Everest" then
-   execute = awful.util.table.join(
-      execute, {
-	 -- Keyboard and mouse
-	 -- "xset m 3 3",	-- Mouse acceleration
-	 "setxkbmap us,fr '' ctrl:nocaps grp:rctrl_rshift_toggle",
-	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
-	       })
-elseif config.hostname == "puydedome" then
+if config.hostname == "Everest" then
    execute = awful.util.table.join(
       execute, {
 	 -- Keyboard and mouse
@@ -71,18 +47,14 @@ elseif config.hostname == "fermi" then
 	 "setxkbmap us,fr,cz '' ctrl:nocaps grp:rctrl_rshift_toggle",
 	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
 	       })
-elseif config.hostname == "guybrush" then
+elseif config.hostname == "puydedome" then
    execute = awful.util.table.join(
       execute, {
 	 -- Keyboard and mouse
-	 "setxkbmap us,fr '' compose:ralt ctrl:nocaps grp:rctrl_rshift_toggle",
-	 "xmodmap -e 'keysym XF86WebCam = XF86ScreenSaver'",
-	 -- Wheel emulation
-	 "xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation' 8 1",
-	 "xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Button' 8 2",
-	 "xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Axes' 8 6 7 4 5",
-	 -- Disable touchpad
-	 "xinput set-int-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Off' 8 1"})
+	 -- "xset m 3 3",	-- Mouse acceleration
+	 "setxkbmap us,fr '' ctrl:nocaps grp:rctrl_rshift_toggle",
+	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
+	       })
 end
 
 os.execute(table.concat(execute, ";"))
@@ -91,20 +63,7 @@ os.execute(table.concat(execute, ";"))
 xrun("polkit-gnome-authentication-agent-1",
      "/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
 xrun("pidgin", "pidgin -n")
-
-if config.hostname == "neo" then
-   xrun("keepassx", "keepassx -min -lock")
-   xrun("transmission", "transmission-gtk -m")
-elseif config.hostname == "guybrush" then
-   xrun("keepassx", "keepassx -min -lock")
-   xrun("NetworkManager Applet", "nm-applet")
-elseif config.hostname == "fermi" then
-   xrun("u1sdtool", "u1sdtool --start")
-elseif config.hostname == "Everest" then
-   xrun("u1sdtool", "u1sdtool --start")
-elseif config.hostname == "puydedome" then
-   xrun("u1sdtool", "u1sdtool --start")
-end
+xrun("u1sdtool", "u1sdtool --start")
 
 -- Load Debian menu entries
 require("debian.menu")
