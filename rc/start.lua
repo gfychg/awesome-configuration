@@ -4,6 +4,7 @@ local xrandr = {
    naruto = "--output VGA1 --auto --output DVI1 --auto --left-of VGA1",
    Everest = "--output VGA1 --mode 1280x720",
    neo    = "--output HDMI-0 --auto --output DVI-0 --auto --right-of HDMI-0",
+   fermi    = "--output HDMI1 --auto --right-of VGA1",
    alucard = "--output DVI-0 --auto --primary --output DisplayPort-0 --auto --right-of DVI-0"
 }
 if xrandr[config.hostname] then
