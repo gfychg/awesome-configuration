@@ -309,7 +309,7 @@ for s = 1, screen.count() do
 	},
 	on(1, systray),
 	sepclose, datewidget, screen.count() > 1 and dateicon or "", spacer,
-	kbdcfg.widget, on(1, sepopen), spacer,
+	on(2, kbdcfg.widget), on(2, sepopen), on(2,spacer),
 	on(2, volwidget), screen.count() > 1 and on(2, volicon) or "", on(2, spacer),
 
 	on(2, batwidget.widget),
