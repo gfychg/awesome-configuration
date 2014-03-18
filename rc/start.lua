@@ -56,6 +56,16 @@ elseif config.hostname == "puydedome" then
 	 "setxkbmap us,fr '' ctrl:nocaps grp:rctrl_rshift_toggle",
 	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
 	       })
+elseif config.hostname == "asus-zdar" then
+   execute = awful.util.table.join(
+      execute, {
+	 -- Keyboard and mouse
+	 -- "xset m 3 3",	-- Mouse acceleration
+	 "setxkbmap us,fr '' ctrl:nocaps grp:rctrl_rshift_toggle",
+	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
+	 "pgrep -u $USER -x nm-applet > /dev/null || (nm-applet &)",	 
+	       })
+
 end
 
 os.execute(table.concat(execute, ";"))
