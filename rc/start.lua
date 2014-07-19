@@ -32,41 +32,13 @@ local execute = {
 }
 
 -- Keyboard/Mouse configuration
-if config.hostname == "Everest" then
-   execute = awful.util.table.join(
-      execute, {
-	 -- Keyboard and mouse
-	 -- "xset m 3 3",	-- Mouse acceleration
-	 "setxkbmap us,fr '' ctrl:nocaps grp:rctrl_rshift_toggle",
-	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
-	       })
-elseif config.hostname == "fermi" then
-   execute = awful.util.table.join(
-      execute, {
-	 -- Keyboard and mouse
-	 -- "xset m 3 3",	-- Mouse acceleration
-	 "setxkbmap us,fr,cz '' ctrl:nocaps grp:rctrl_rshift_toggle",
-	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
-	       })
-elseif config.hostname == "puydedome" then
-   execute = awful.util.table.join(
-      execute, {
-	 -- Keyboard and mouse
-	 -- "xset m 3 3",	-- Mouse acceleration
-	 "setxkbmap us,fr '' ctrl:nocaps grp:rctrl_rshift_toggle",
-	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
-	       })
-elseif config.hostname == "asus-zdar" then
-   execute = awful.util.table.join(
-      execute, {
-	 -- Keyboard and mouse
-	 -- "xset m 3 3",	-- Mouse acceleration
-	 "setxkbmap us,fr '' ctrl:nocaps grp:rctrl_rshift_toggle",
-	 "xmodmap -e 'keysym Pause = XF86ScreenSaver'",
-	 "pgrep -u $USER -x nm-applet > /dev/null || (nm-applet &)",	 
-	       })
-
-end
+execute = awful.util.table.join(
+	execute, {
+	-- Keyboard and mouse
+	-- "xset m 3 3",	-- Mouse acceleration
+	"setxkbmap fr,us '' ctrl:nocaps grp:rctrl_rshift_toggle",
+	"xmodmap -e 'keysym Pause = XF86ScreenSaver'",
+	})
 
 os.execute(table.concat(execute, ";"))
 
@@ -74,12 +46,11 @@ os.execute(table.concat(execute, ";"))
 xrun("polkit-gnome-authentication-agent-1",
      "/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
 xrun("pidgin", "pidgin -n")
-xrun("u1sdtool", "u1sdtool --start")
 
 -- Load Debian menu entries
 require("debian.menu")
 
-terminal = "x-terminal-emulator"
+terminal = "lxterminal"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -94,7 +65,8 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "open terminal", terminal }
+                                    { "open terminal", terminal },
+                                    { "switch user", terminal .. " -e /usr/bin/dm-tool switch-to-user dominique" }
                                   }
                         })
 

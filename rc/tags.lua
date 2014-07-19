@@ -20,12 +20,12 @@ shifty.config.tags = {
       spawn = config.browser,
       icon = tagicon("web")
    },
-   emacs = {
-      position = 2,
+   pytrainer = {
+      position = 5,
       mwfact = 0.6,
       exclusive = false,
       screen = 1,
-      spawn = "emacs",
+      spawn = "pytrainer",
       icon = tagicon("dev"),
    },
    xterm = {
@@ -37,7 +37,7 @@ shifty.config.tags = {
       icon = tagicon("main"),
    },
    im = {
-      position = 4,
+      position = 6,
       mwfact = 0.2,
       exclusive = true,
       screen = math.max(screen.count(), 2),
@@ -45,14 +45,28 @@ shifty.config.tags = {
       nopopup = true,           -- don't give focus on creation
    },
    thunderbird = {
-      position = 5,
+      position = 2,
       mwfact = 0.2,
       exclusive = true,
       screen = math.max(screen.count(), 2),
       spawn = "thunderbird",
    },
-   commander = {
+   office = {
+      position = 4,
+      mwfact = 0.6,
+      exclusive = false,
+      screen = math.max(screen.count(), 2),
+      spawn = "libreoffice",
+   },
+   hotot = {
       position = 7,
+      mwfact = 0.6,
+      exclusive = false,
+      screen = math.max(screen.count(), 2),
+      spawn = "hotot",
+   },
+   commander = {
+      position = 8,
       mwfact = 0.6,
       exclusive = false,
       screen = math.max(screen.count(), 2),
